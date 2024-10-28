@@ -68,6 +68,12 @@ inorder tst;;
 
 (* Problem 7 *)
 (* Author: Joaquin Nietes)
-(\t.\u. u t t)(\x. x)
+(\t.\u. u t t)(\x. x) t
 t (\x. x)(\x. x)
 t (\x. x)
+
+(* Problem 9 *)
+(* Author: Joaquin Nietes *)
+(\x. x x)(\x. y)
+(\x. y)(\x. y)
+y
