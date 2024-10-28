@@ -48,12 +48,20 @@ numNodes tst;;
 (* Derrick Pavia
    Problem 8 *)
 (lambda z. z z z) (lambda y. y y)
-TODO
+1. (lambda z. z z z) (lambda y. y y)
+2. (lambda y. y y) (lambda y. y y)
+3. (lambda y. y y) (lambda y. y y)
+No normal form since it is infinite
 
 (* Derrick Pavia
    Problem 10 *)
-( lambda z. z t ) ( lambdaz. (lambda t. t z) (lambda x. z x) )
-TODO
+(lambda z. z t) (lambdaz. (lambda t. t z) (lambda x. z x))
+1. (lambda z. z t) (lambda z. (lambda t. t z) (lambda x. z x))
+2. (lambda z. z t) (lambda z. (lambda x. z x) z)
+3. (lambda z. z t) (lambda z. z z)
+4. (lambda z. z z) t 
+5. t t
+Normal form is 5.
 
 {- Derrick Problem 12 
    Write a Haskell function that produces the 
