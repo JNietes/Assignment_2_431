@@ -67,17 +67,27 @@ Normal form is 5.
    Write a Haskell function that produces the 
    list of the divisors of a given positive integer-}
 import Data.Fixed (mod')
+:{
 divisors :: Int -> [Int] 
-   divisors n = [x| x <- [1..n], n `rem` x == 0]
-
+divisors n = [x| x <- [1..n], n `rem` x == 0]
+:}
 {- Derrick Problem 14 
    Define the (infinite) list of prime numbers, using your isPrime function of 13. above.
    Note that this is not to be the way I defined the list of primes in my slides -}
-TODO
-
+:{
+primes :: [Int]
+primes = filter isPrime [2..]
+:}
 {- Derrick Problem 16 
    A positive integer is called perfect if it is equal to the sum of all of its divisors, excluding itself.
    For example, 6 and 28 are perfect, because 6 = 1+2+3 and 28 = 1+2+4+7+14.
    Using a list comprehension, define a Haskell function perfs from Int to [Int]
    that produces the list of all perfect numbers up to the given argument. -}
-TODO
+:{
+isPerfect :: Int -> Bool
+isPerfect n = sum (divisors n) == n
+:}
+:{
+perfs :: Int -> [Int]
+perfs limit = [n | n <- [1..limit], isPerfect n]
+:}
