@@ -1,0 +1,100 @@
+
+(* Problem 1 *)
+(* Author: Joaquin Nietes *)
+
+(* Non Tail-Recursive*)
+let rec replicate x n =
+  match n with
+  | n when n < 0 -> failwith "n must be a non-negative integer"
+  | 0 -> []
+  | _ -> x :: replicate x (n-1)
+;;
+
+(* Tail-Recursive *)
+let rec tailReplicate x n = 
+  let rec helper acc x n =
+    match n with
+    | n when n < 0 -> failwith "n must be a non-negative integer"
+    | 0 -> acc
+    | _ -> helper (x :: acc) x (n-1)
+  in helper [] x n
+;;
+
+replicate "Alan" 100000000;;
+replicate "Alan" (-3);;
+tailReplicate "Turing" (-3);;
+tailReplicate "Turing" 100000000;;
+
+(* Problem 3 *)
+(* Author: Joaquin Nietes *)
+  
+(* Non Tail-Recursive *)
+let rec reverseList list =
+  match list with
+  | [] -> []
+  | hd :: tl -> reverseList tl @ [hd]
+;;
+
+(* Tail-Recursive *)
+let reverseListTail list =
+  let rec helper acc list =
+    match list with
+    | [] -> acc
+    | hd :: tl -> helper (hd :: acc) tl
+  in helper [] list
+;;
+
+reverseList [1;2;3;4;5;6;7;8;9;10];;
+reverseListTail [1;2;3;4;5;6;7;8;9;10];;
+
+(* Problem 5 *)
+(* Author: Joaquin Nietes)
+type 'a tree = 
+  | Empty
+  | Leaf of 'a
+  | Node of ('a * 'a tree * 'a tree)
+;;
+
+let tst = Node( 5, Leaf 2, Node( 12, Node(8, Leaf 7, Leaf 10), Leaf 49 ) ) ;;
+
+let rec inorder tree =
+  match tree with
+  | Empty -> []
+  | Leaf x -> [x]
+  | Node (x, left, right) -> inorder left @ [x] @ inorder right
+;;
+
+inorder tst;;
+
+(* Problem 7 *)
+(* Author: Joaquin Nietes)
+(\t.\u. u t t)(\x. x) t
+t (\x. x)(\x. x)
+t (\x. x)
+
+(* Problem 9 *)
+(* Author: Joaquin Nietes *)
+(\x. x x)(\x. y)
+(\x. y)(\x. y)
+y
+
+(* Problem 11)
+(* Author: Joaquin Nietes *)
+:{
+generateList :: Int -> [Int]
+generateList n = [1..n]
+:}
+
+(* Problem 13)
+(* Author: Joaquin Nietes *)
+:{
+isPrime ::  Int -> Bool
+isPrime n = length (divisors n) == 2
+:}
+
+(* Problem 15)
+(* Author: Joaquin Nietes *)
+
+:{
+primes!!2000
+:}
