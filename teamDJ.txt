@@ -91,3 +91,10 @@ generateList n = [1..n]
 isPrime ::  Int -> Bool
 isPrime n = length (divisors n) == 2
 :}
+
+(* Problem 15)
+(* Author: Joaquin Nietes *)
+
+:{
+primes!!2000
+:}
